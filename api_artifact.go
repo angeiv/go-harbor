@@ -287,6 +287,16 @@ func (a *ArtifactApiService) CopyArtifact(ctx context.Context, projectName strin
 				newErr.model = v
 				return localVarHttpResponse, newErr
 		}
+		if localVarHttpResponse.StatusCode == 405 {
+			var v Array
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarHttpResponse, newErr
+				}
+				newErr.model = v
+				return localVarHttpResponse, newErr
+		}
 		if localVarHttpResponse.StatusCode == 500 {
 			var v Array
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));

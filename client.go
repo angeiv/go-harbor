@@ -48,6 +48,8 @@ type APIClient struct {
 
 	AuditlogApi *AuditlogApiService
 
+	PreheatApi *PreheatApiService
+
 	ProjectApi *ProjectApiService
 
 	RepositoryApi *RepositoryApiService
@@ -73,6 +75,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	// API Services
 	c.ArtifactApi = (*ArtifactApiService)(&c.common)
 	c.AuditlogApi = (*AuditlogApiService)(&c.common)
+	c.PreheatApi = (*PreheatApiService)(&c.common)
 	c.ProjectApi = (*ProjectApiService)(&c.common)
 	c.RepositoryApi = (*RepositoryApiService)(&c.common)
 	c.ScanApi = (*ScanApiService)(&c.common)
